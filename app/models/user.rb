@@ -8,11 +8,12 @@ class User < ApplicationRecord
 
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
+
+  attr_accessor :password
+
   validates :password, presence: true, on: :create
   validates_confirmation_of :password
   before_save :encrypt_password
-
-  attr_accessor :password
 
   def encrypt_password
     if password.present?
