@@ -6,8 +6,18 @@ class User < ApplicationRecord
 
   has_many :questions
 
-  validates :email, :username, presence: true
-  validates :email, :username, uniqueness: true
+  validates :email, presence: true,
+                    uniqueness: true,
+                    format: { with: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$/,
+                              multiline: true,
+                              message: "format is incorrect" }
+
+  validates :username, presence: true,
+                       uniqueness: true,
+                       length: { maximum: 40 },
+                       format: { with: /^\w+$/,
+                                 multiline: true,
+                                 message: "format is incorrect, only latin symbols, digits, and '_' are allowed" }
 
   attr_accessor :password
 
