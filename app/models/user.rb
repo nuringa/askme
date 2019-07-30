@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :questions
 
+  before_save :downcase_username
+
   validates :email, presence: true,
                     uniqueness: true,
                     format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/,
@@ -32,6 +34,10 @@ class User < ApplicationRecord
           )
       )
     end
+  end
+
+  def downcase_username
+    self.username.downcase!
   end
 
   def self.hash_to_string(password_hash)
