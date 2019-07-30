@@ -5,14 +5,12 @@ class User < ApplicationRecord
   DIGEST = OpenSSL::Digest::SHA256.new
 
   has_many :questions
-
-  before_save :downcase_username
+  before_validation :downcase_username
 
   validates :email, presence: true,
                     uniqueness: true,
                     format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/,
                               message: "format is incorrect" }
-
   validates :username, presence: true,
                        uniqueness: true,
                        length: { maximum: 40 },
