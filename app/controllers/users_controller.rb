@@ -28,6 +28,9 @@ class UsersController < ApplicationController
         Question.new(text: 'Как дела?', created_at: Date.parse('27.03.2016')),
         Question.new(
             text: 'В чем смысл жизни?', created_at: Date.parse('27.03.2016')
+        ),
+        Question.new(
+            text: 'Есть ли жизнь на Марсе?', created_at: Date.parse('31.07.2019')
         )
     ]
     @new_question = Question.new
