@@ -11,26 +11,30 @@ module ApplicationHelper
     content_tag 'span', '', class: "fa fa-#{icon_class}"
   end
 
-  def declension(number, krokodil, krokodila, krokodilov)
+  def declension_noun(number, one, few, many)
     if (11..14).include?(number)
-      return krokodilov
+      return many
     end
 
     if (11..14).include?(number % 100)
-      return krokodilov
+      return many
     end
 
     remainder = number % 10
     if (remainder == 1)
-      return krokodil
+      return one
     end
 
     if (remainder >= 2 && remainder <= 4)
-      return krokodila
+      return few
     end
 
     if (remainder >= 5 && remainder <= 9 || remainder == 0)
-      return krokodilov
+      return many
     end
+  end
+
+  def declension_adjective(number, one, many)
+    number == 1 ? one : many
   end
 end
