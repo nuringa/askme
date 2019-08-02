@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_url, notice: 'Вы успешно зарегистрировались и залогинились'
+      redirect_to root_url, notice: 'Вы успешно зарегистрировались и залогинились.'
     else
       render 'edit'
     end

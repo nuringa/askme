@@ -11,7 +11,7 @@ module ApplicationHelper
     content_tag 'span', '', class: "fa fa-#{icon_class}"
   end
 
-  def declension_noun(number, one, few, many)
+  def declension(number, one, few, many)
     if (11..14).include?(number)
       return many
     end
@@ -32,9 +32,5 @@ module ApplicationHelper
     if (remainder >= 5 && remainder <= 9 || remainder == 0)
       return many
     end
-  end
-
-  def declension_adjective(number, one, many)
-    number == 1 ? one : many
   end
 end
