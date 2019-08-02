@@ -44,7 +44,6 @@ class User < ApplicationRecord
 
   def self.authenticate(email, password)
     user = find_by(email: email)
-
     return nil unless user.present?
 
     hashed_password = User.hash_to_string(
