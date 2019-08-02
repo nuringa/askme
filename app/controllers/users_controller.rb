@@ -45,6 +45,12 @@ class UsersController < ApplicationController
     @unanswered_count = @questions_count - @answers_count
   end
 
+  def destroy
+    @user.destroy
+    reset_session
+    redirect_to root_url, notice: 'Ваш аккаунт успешно удален.'
+  end
+
   private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :avatar_url, :background_color)
