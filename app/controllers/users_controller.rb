@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_url, notice: 'Вы успешно зарегистрировались и залогинились.'
     else
-      render 'edit'
+      render 'new'
     end
   end
 
