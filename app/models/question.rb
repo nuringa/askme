@@ -4,6 +4,19 @@ class Question < ApplicationRecord
   has_many :question_tags
   has_many :tags, through: :question_tags
 
+  after_commit :create_update_tags, on: :create
+
   validates :text, presence: true, length: { maximum: 255 }
   validates :user, :text, presence: true
+
+  def create_update_tags
+    self.tags.clear
+    extract_tags.each do |tag_name|
+      self.tags << Tag.find_or_create_by(name: tag_name.downcase)
+    end
+  end
+
+  def extract_tags
+    text.scan(/#[[:word:]-]+/).uniq.map { |text| text.gsub('#', '') }
+  end
 end
