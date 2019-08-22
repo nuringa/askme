@@ -1,2 +1,7 @@
-<h1>Tags#show</h1>
-<p>Find me in app/views/tags/show.html.erb</p>
+<div class="buffer-both">
+  <div class="questions-list">
+    <% @questions.uniq.each do |question| %>
+      <%= render partial: 'questions/question', object: question %>
+    <% end %>
+  </div>
+</div>

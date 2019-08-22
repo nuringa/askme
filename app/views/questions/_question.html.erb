@@ -5,6 +5,15 @@
       <%= question.text %>
     </div>
 
+    <div class="buffer-bottom">
+      <% question.text.to_s.split(' ').each do |word| %>
+        <% if word.start_with?('#') %>
+          <% word = word.downcase.delete('#') %>
+          <%= link_to word, tag_path(word) %>
+        <% end %>
+      <% end %>
+    </div>
+
     <%# Автор вопроса %>
     <div class="buffer-bottom">
       <% if question.author %>

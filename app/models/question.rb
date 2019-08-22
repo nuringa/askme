@@ -4,7 +4,7 @@ class Question < ApplicationRecord
   has_many :question_tags
   has_many :tags, through: :question_tags
 
-  after_commit :create_update_tags, on: :create
+  after_commit :create_update_tags
 
   validates :text, presence: true, length: { maximum: 255 }
   validates :user, :text, presence: true
@@ -17,6 +17,12 @@ class Question < ApplicationRecord
   end
 
   def extract_tags
-    text.scan(/#[[:word:]-]+/).uniq.map { |text| text.gsub('#', '') }
+    input_string = if answer.present?
+      text + ' ' + answer
+    else
+      text
+    end
+
+    input_string.scan(/#[[:word:]-]+/).uniq.map { |tag_name| tag_name.gsub('#', '') }
   end
 end
