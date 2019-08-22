@@ -5,12 +5,6 @@
       <%= question.text %>
     </div>
 
-    <div class="buffer-bottom">
-      <% question_tags(question.text).map do |tag| %>
-      <%= link_to tag, tag_path(tag.delete('#'))%>
-      <% end %>
-    </div>
-
     <%# Автор вопроса %>
     <div class="buffer-bottom">
       <% if question.author %>
@@ -23,16 +17,17 @@
       <div class="question-answer text-lead">
         <%= question.answer %>
       </div>
-      <div>
-        <% question_tags(question.answer).map do |tag| %>
-          <%= link_to tag, tag_path(tag.delete('#'))%>
-        <% end %>
-      </div>
     <% end %>
 
     <%# Дата создания вопроса (отформатированная) %>
     <div class="question-date">
       <%= l(question.created_at, format: :short) %>
+    </div>
+
+    <div class="buffer-top">
+      <% list_tags(question).map do |tag| %>
+        <%= link_to tag, tag_path(tag.delete('#')), class: "tags-list"%>&nbsp;
+      <% end %>
     </div>
   </div>
 

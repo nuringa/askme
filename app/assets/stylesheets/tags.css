@@ -1,0 +1,7 @@
+.tags-list {
+  color: #2e2f41;
+  font-style: italic;
+}
+.tags-list:hover {
+  color: #00b6ad;
+}

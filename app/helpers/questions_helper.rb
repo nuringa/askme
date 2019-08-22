@@ -1,5 +1,5 @@
 module QuestionsHelper
-  def question_tags(string)
-    string.downcase.split(' ').select { |word| word.start_with?('#') }
+  def list_tags(question)
+    question.tags.map { |tag| '#' + tag.name }
   end
 end

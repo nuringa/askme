@@ -14,7 +14,7 @@
   <div class="row">
     <% @tags.each do |tag| %>
       <% hashtag = "#" + tag.name %>
-      <%= link_to hashtag, tag_path(tag.name) %>
+      <%= link_to hashtag, tag_path(tag.name), class: 'tags-list' %>&nbsp;
     <% end %>
   </div>
 </div>
