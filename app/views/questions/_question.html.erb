@@ -25,8 +25,9 @@
     </div>
 
     <div class="buffer-top">
-      <% list_tags(question).map do |tag| %>
-        <%= link_to tag, tag_path(tag.delete('#')), class: "tags-list"%>&nbsp;
+      <% question.tags.each do |tag| %>
+        <% hashtag = "#" + tag.name %>
+        <%= link_to hashtag, tag_path(tag.name), class: 'tags-list' %>&nbsp;
       <% end %>
     </div>
   </div>
