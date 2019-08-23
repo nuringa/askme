@@ -33,4 +33,9 @@ module ApplicationHelper
       return many
     end
   end
+
+  def hashtag_with_name(tag)
+    hashtag = "#" + tag.name
+    link_to hashtag, tag_path(tag.name), class: 'tags-list'
+  end
 end
