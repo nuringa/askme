@@ -26,7 +26,7 @@
 
     <div class="buffer-top">
       <% question.tags.each do |tag| %>
-        <%= hashtag_with_name(tag) %>&nbsp;
+        <%= link_to_hashtag(tag) %>&nbsp;
       <% end %>
     </div>
   </div>
