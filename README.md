@@ -1,24 +1,43 @@
-# README
+## ASKME
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Description**
 
-Things you may want to cover:
+This is a social networking app developed for learning purposes. You can create an account and ask and answer your friends' questions. Anonimous questions are also possible.
 
-* Ruby version
+**Requirements**
 
-* System dependencies
+***reCAPTCHA gem*** was used to minimize spam.
 
-* Configuration
+> Ruby 2.6.3 
+> Rails 5.2.3
 
-* Database creation
+Database:
 
-* Database initialization
+> development: SQLite3 
+> production: PostgreSQL
 
-* How to run the test suite
+App language: *Russian*
 
-* Services (job queues, cache servers, search engines, etc.)
+**Launching steps:**
 
-* Deployment instructions
+1: Download or clone this repository
 
-* ...
+2: Use bundler
+
+    $ bundle install
+
+3: Create DataBase
+
+    $ bundle exec rails db:create
+
+4: Run DataBase migrations
+
+    $ bundle exec rails db:migrate
+
+5: To start Rails service, enter in command line
+
+    $ rails s
+
+**Deploy**
+
+This App is set up to work on Heroku servers in production.
